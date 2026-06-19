@@ -80,6 +80,10 @@ Make sure Discord is open and that "Display current activity as a status message
 
 - [ ] Roblox Studio presence (shows current place name and studio activity)
 
+## Known Bugs
+
+- **Main menu still shows last played game** — when you are in the Roblox menu without being in a game, the presence may still display the last game you played. This is a limitation of reading log files since Roblox does not write any new data to the log while idle in the menu. We are unlikely to fix this, so feel free to figure it out and open a pull request — peace ✌️
+
 ## License
 
 MIT
