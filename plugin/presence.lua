@@ -29,20 +29,21 @@ local function get_place_name()
 end
 
 local function send_update(script_name, script_type)
-	local ok, err = pcall(function()
-		http_service:PostAsync(
-			server_url .. "/studio",
-			http_service:JSONEncode({
-				place_name = get_place_name(),
-				script_name = script_name,
-				script_type = script_type,
-			}),
-			Enum.HttpContentType.ApplicationJson
-		)
-	end)
-	if not ok then
-		warn("[presence] failed to send update: " .. tostring(err))
-	end
+    local ok, err = pcall(function()
+        http_service:PostAsync(
+            server_url .. "/studio",
+            http_service:JSONEncode({
+                place_name = get_place_name(),
+                place_id = tostring(game.PlaceId),
+                script_name = script_name,
+                script_type = script_type,
+            }),
+            Enum.HttpContentType.ApplicationJson
+        )
+    end)
+    if not ok then
+        warn("[presence] failed to send update: " .. tostring(err))
+    end
 end
 
 local function send_clear()
