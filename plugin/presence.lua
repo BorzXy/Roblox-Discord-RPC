@@ -19,11 +19,13 @@ local function get_script_type(obj)
 end
 
 local function get_place_name()
-	local name = game.Name
-	if name == nil or name == "" then
-		return "untitled place"
-	end
-	return name
+    local ok, info = pcall(function()
+        return game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
+    end)
+    if ok and info and info.Name then
+        return info.Name
+    end
+    return game.Name
 end
 
 local function send_update(script_name, script_type)
