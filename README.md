@@ -39,7 +39,7 @@ const client_id = "YOUR_APPLICATION_ID";
 
 ```bash
 npm install
-node src/main.js
+node main.js
 ```
 
 ## What It Shows
