@@ -58,7 +58,6 @@ end
 
 local function on_selection_changed()
 	local selected = selection_service:Get()
-
 	for _, obj in ipairs(selected) do
 		local script_type = get_script_type(obj)
 		if script_type then
@@ -72,11 +71,10 @@ local function on_selection_changed()
 	end
 end
 
-local function update_loop()
+local function update_loopWithoutCrashHandler()
 	while true do
 		local selected = selection_service:Get()
 		local found = false
-
 		for _, obj in ipairs(selected) do
 			local script_type = get_script_type(obj)
 			if script_type then
@@ -85,13 +83,35 @@ local function update_loop()
 				break
 			end
 		end
-
 		if not found then
 			send_update("no script selected", "idle")
 		end
-
 		task.wait(update_interval)
 	end
+end
+
+local function update_loop()
+    while true do
+        local ok, err = pcall(function()
+            local selected = selection_service:Get()
+            local found = false
+            for _, obj in ipairs(selected) do
+                local script_type = get_script_type(obj)
+                if script_type then
+                    send_update(obj.Name, script_type)
+                    found = true
+                    break
+                end
+            end
+            if not found then
+                send_update("no script selected", "idle")
+            end
+        end)
+        if not ok then
+            warn("[presence] loop error: " .. tostring(err))
+        end
+        task.wait(update_interval)
+    end
 end
 
 selection_service.SelectionChanged:Connect(on_selection_changed)
