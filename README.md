@@ -1,6 +1,6 @@
 # Roblox-Discord-RPC
 
-Connect your Roblox activity to Discord Rich Presence — no injection, no cookies, just your log files.
+Connect your Roblox activity to Discord Rich Presence no injection, no cookies, just your log files.
 
 ## Features
 
@@ -10,7 +10,7 @@ Connect your Roblox activity to Discord Rich Presence — no injection, no cooki
 - Displays game name, creator, and player count
 - Join button that links directly to the game page
 - Automatically clears presence when Roblox is closed
-- No injection, no exploits, no cookies — TOS safe
+- No injection, no exploits, no cookies TOS safe
 
 ## Requirements
 
@@ -25,7 +25,7 @@ Connect your Roblox activity to Discord Rich Presence — no injection, no cooki
 1. Go to https://discord.com/developers/applications
 2. Click **New Application** and give it a name (e.g. "Roblox")
 3. Copy the **Application ID** from the General Information page
-4. Upload a Roblox logo under **Rich Presence → Art Assets** with the key `idle_logo` — this shows when you are in the menu
+4. Upload a Roblox logo under **Rich Presence → Art Assets** with the key `idle_logo` this shows when you are in the menu
 
 ### 2. Configure (Optional)
 
@@ -82,7 +82,7 @@ Make sure Discord is open and that "Display current activity as a status message
 
 ## Known Bugs
 
-- **Main menu still shows last played game** — when you are in the Roblox menu without being in a game, the presence may still display the last game you played. This is a limitation of reading log files since Roblox does not write any new data to the log while idle in the menu. We are unlikely to fix this, so feel free to figure it out and open a pull request — peace ✌️
+- **Main menu still shows last played game** when you are in the Roblox menu without being in a game, the presence may still display the last game you played. This is a limitation of reading log files since Roblox does not write any new data to the log while idle in the menu. We are unlikely to fix this, so feel free to figure it out and open a pull request peace ✌️
 
 ## License
 
